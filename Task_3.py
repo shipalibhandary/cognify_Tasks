@@ -38,20 +38,29 @@ def delete_task():
             print("Invalid!!! please check the id again...")
 
 
-
+def update_task():
+    id = int(input("\nEnter the Task_id that you want to Update: "))
+    for task in tasks:
+        if task.task_id == id:
+            task.name = input("enter the new task name: ")
+            return
+    else:
+        print("Such Id is not found!!")
 
 
 while True:
-    print("\n1.create New task\n 2.Display All\n 4.Delete tasks ")
+    print("\n 1.create New task\n 2.Display All\n 3.Update Task\n 4.Delete tasks\n 5.Exit ")
     choice = input("Enter your choice: ")
     if choice == '1':
         create_task()
     elif choice == '2':
         print("\nYour Tasks Are: \n")
         display_task()
+    elif choice == '3':
+        update_task()
     elif choice == '4':
         delete_task()
+    elif choice == '5':
+        exit(0)
     else:
         print("Invalid Option")
-    else:
-        print("Invalid choice!!!....Please try again!!")
