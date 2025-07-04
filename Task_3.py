@@ -52,4 +52,6 @@ while True:
     elif choice == '4':
         delete_task()
     else:
+        print("Invalid Option")
+    else:
         print("Invalid choice!!!....Please try again!!")
