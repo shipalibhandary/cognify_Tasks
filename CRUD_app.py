@@ -9,19 +9,17 @@ class Task:
         print(f"Id:{self.id} Name: {self.name}")
 
     def line_by_line(self):
-        return f"\nId:{self.id} Name: {self.name}"
+        return f"{self.id},{self.name}\n"
 
+    @staticmethod
     def read_line(line):
         parts = line.strip().split(",")
-        if len(parts) ==3:
+        if len(parts) ==2:
             id, name=parts
             return Task(int(id), name)
-        elif len(parts)== 2:
-            id, name = parts
-            return Task(int(id), name)
         else:
-            print("skipping invalid line")
-
+            print("skipping invalid line",line.strip())
+            return None
 
 
 task_file = "mytasks.txt"
@@ -35,7 +33,8 @@ def load():
     with open(task_file, "r")as file:
         for line in file:
             task = Task.read_line(line)
-            tasks.append(task)
+            if task:
+                tasks.append(task)
 
 def create_tasks():
     taskid = tasks[-1].id + 1 if tasks else 1
@@ -88,8 +87,9 @@ while True:
     print("\n.****WELCOME****")
     print("1.Add Task")
     print("2.View Task")
-    print("3.Delete tasks")
-    print("4.Exit")
+    print("3.update Task")
+    print("4.Delete tasks")
+    print("5.Exit")
     choice = input("Enter your choice: ")
     if choice == '1':
         create_tasks()
@@ -102,5 +102,3 @@ while True:
     elif choice == '5':
         print("Existing and saving Tasks...")
         exit(0)
-
-

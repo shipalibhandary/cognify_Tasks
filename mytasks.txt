@@ -1,1 +1,3 @@
-I:1 Name: clean my brother's roomI:2 Name: piano class at 5pm
+1,cook dinner
+2,study python
+3,piano class at 6pm
